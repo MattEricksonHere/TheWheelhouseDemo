@@ -9,7 +9,7 @@ import wheelhouse.PC;
 
 public class ToneET extends Tone {
 
-	protected static final int refAbsNote = 57;
+	protected static final int refAbsNote = 69; // A4
 	
 	private PC pc;
 	
