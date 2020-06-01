@@ -2,6 +2,24 @@
 
 The Wheelhouse Demo is a Java application that allows users to play a virtual electric piano using their computer keyboard, and displaying a live analysis of the musical notes being played.
 
+## Features
+
+![Application Screenshot](/images/readme1.png)
+
+### Tonnetz
+
+A diagram that helps to visualize the harmonic relationships between notes and chords. Find more information here: https://en.wikipedia.org/wiki/Tonnetz
+
+### Harmonics
+
+A graph showing the frequencies of the overtones and undertones of each note being played. When these frequencies line up in consonance, a blue line appears. When these frequencies clash in dissonance, a red line appears between them.
+
+### Keys
+
+A graphical piano that allows the user to play notes using their computer keyboard. For example, the 'Z' key will play a C4 note, the 'S' key will play a C#4 note, and so on. A higher octave can be played beginning on the 'Q' key.
+
+This feature will also analyze the notes being played and determine what chord is being played, displaying the chord's symbol on the screen.
+
 ## Dependencies
 
 There are two libraries packaged with this software.
