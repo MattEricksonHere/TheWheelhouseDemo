@@ -8,6 +8,10 @@ import java.util.Random;
 
 import wheelhouse.tone.Tone;
 
+/**
+ * A static utility class for mathematical calculations
+ * @author Me
+ */
 public class Calc {
 	
 	/**

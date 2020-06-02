@@ -6,6 +6,10 @@ import java.util.List;
 import wheelhouse.Calc.Ratio;
 import wheelhouse.tone.ToneET;
 
+/**
+ * A static utility class for miscellaneous musical calculations
+ * @author Me
+ */
 public class Wheel {
 	
 	private Wheel(){} // Static calls only
@@ -53,7 +57,7 @@ public class Wheel {
 		return heights;
 	}
 	
-	public List<Interval> shiftIntervals(List<Interval> intervals, int shift) {
+	public static List<Interval> shiftIntervals(List<Interval> intervals, int shift) {
 		List<Interval> newIntervals = new ArrayList<Interval>();
 		for (int i = 0; i < intervals.size(); i++) {
 			newIntervals.add(shiftInterval(intervals.get(i), shift));
@@ -61,7 +65,7 @@ public class Wheel {
 		return newIntervals;
 	}
 	
-	public Interval shiftInterval(Interval interval, int shift) {
+	public static Interval shiftInterval(Interval interval, int shift) {
 		return new Interval(interval.getInterval() + shift);
 	}
 	

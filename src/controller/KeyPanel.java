@@ -24,6 +24,10 @@ import wheelhouse.ChordPattern;
 import wheelhouse.PC;
 import wheelhouse.tone.ToneET;
 
+/**
+ * A panel of the application which displays a piano graphic
+ * @author Me
+ */
 public class KeyPanel extends SubPanel implements Listener {
 	private static final long serialVersionUID = -1109240850064575874L;
 	
@@ -110,6 +114,9 @@ public class KeyPanel extends SubPanel implements Listener {
 		initPanel();
 	}
 	
+	/**
+	 * Initializes the UI of the panel
+	 */
 	private void initPanel() {
 		
 		setPreferredSize(new Dimension(1000, 300));
@@ -122,6 +129,10 @@ public class KeyPanel extends SubPanel implements Listener {
 		
 	}
 	
+	/**
+	 * The panel which displays information about the played notes
+	 * @return the panel instance
+	 */
 	private JPanel getAnalysisPanel() {
 		if (analysisPanel == null) {
 			analysisPanel = new JPanel();
@@ -131,6 +142,10 @@ public class KeyPanel extends SubPanel implements Listener {
 		return analysisPanel;
 	}
 	
+	/**
+	 * The label which displays the name of the chord being played
+	 * @return the label instance
+	 */
 	private JLabel getChordSymbolLabel() {
 		if (chordSymbolLabel == null) {
 			chordSymbolLabel = new JLabel(" ");
@@ -140,6 +155,10 @@ public class KeyPanel extends SubPanel implements Listener {
 		return chordSymbolLabel;
 	}
     
+    /**
+     * The internal panel on which the piano will be painted
+     * @author Me
+     */
     private class KeyboardCanvas extends JPanel {
 		private static final long serialVersionUID = -689114774394195507L;
 
@@ -151,7 +170,6 @@ public class KeyPanel extends SubPanel implements Listener {
 			setMinimumSize(new Dimension(WIDTH, HEIGHT));
 			setPreferredSize(new Dimension(WIDTH, HEIGHT));
 			setMaximumSize(new Dimension(WIDTH, HEIGHT));
-			
 		}
 
 	    @Override
@@ -205,6 +223,11 @@ public class KeyPanel extends SubPanel implements Listener {
 			g.setColor(Color.WHITE);
 	    }
 
+		/**
+		 * Determines and returns the x coordinate for the given key
+		 * @param key the key to paint
+		 * @return the x coordinate of the key
+		 */
 		private int getXForKey(Key key) {
 			if (!key.isBlack) {
 				return (((getWidth() - (2 * xMargins)) / numWhiteKeys) * key.whiteKeyIndex + xMargins);
@@ -214,24 +237,40 @@ public class KeyPanel extends SubPanel implements Listener {
 		}
     }
     
+    /**
+     * The object that defines a piano key to be painted
+     * @author Me
+     */
     private class Key {
     	public int absoluteNote;
     	public int whiteKeyIndex;
     	public boolean isBlack;
     	public boolean on;
     	
+    	/**
+    	 * @param absoluteNote the note represented by the key
+    	 * @param whiteKeyIndex the number of white keys to the left of this key
+    	 * @param isBlack true if the key is a black key
+    	 */
     	private Key(int absoluteNote, int whiteKeyIndex, boolean isBlack) {
 			this.absoluteNote = absoluteNote;
 			this.whiteKeyIndex = whiteKeyIndex;
 			this.isBlack = isBlack;
 		}
 		
+    	/**
+    	 * Set whether the key is currently being played
+    	 * @param isOn true if the key is being played
+    	 */
     	private void setOn(boolean isOn) {
 			this.on = isOn;
 		}
     }
 
 	
+	/**
+	 * Updates the notes currently being played
+	 */
 	private void updateNotes() {
 		List<ToneET> notes = VSTPlayer.getInstance().getCurrentTones();
 		for (Key key : keys) {

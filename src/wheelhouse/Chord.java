@@ -6,6 +6,10 @@ import wheelhouse.Calc.Ratio;
 import wheelhouse.tone.Tone;
 import wheelhouse.tone.ToneET;
 
+/**
+ * Wraps a list of tones to be interpreted as a chord
+ * @author Me
+ */
 public class Chord {
 
 	private List<ToneET> tones = new ArrayList<ToneET>();

@@ -10,6 +10,10 @@ import com.synthbot.audioplugin.vst.JVstLoadException;
 import com.synthbot.audioplugin.vst.vst2.JVstHost2;
 import com.synthbot.audioplugin.vst.vst2.JVstHostListener;
 
+/**
+ * A class which loads a given VST instrument
+ * @author Me
+ */
 public class VSTLoader implements JVstHostListener {
 
 	private static final float SAMPLE_RATE = 44100f;

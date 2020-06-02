@@ -27,6 +27,10 @@ import messaging.Courier;
 import messaging.Listener;
 import messaging.QueueMessage;
 
+/**
+ * A panel of the application which displays an overtone frequency graph
+ * @author Me
+ */
 public class HarmonicsPanel extends SubPanel implements Listener {
 	private static final long serialVersionUID = 4274790804691407849L;
 
@@ -38,6 +42,9 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 		Courier.registerListener(this);
 	}
 	
+	/**
+	 * Initializes the UI of this panel
+	 */
 	private void initPanel() {
 		setPreferredSize(new Dimension(1000, 200));
 		setLayout(new BorderLayout());
@@ -48,6 +55,10 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 		
 	}
 
+	/**
+	 * The internal panel on which the graph will be painted
+	 * @author Me
+	 */
 	public class HarmonicsCanvas extends JPanel {
 		private static final long serialVersionUID = -1397984742508421004L;
 
@@ -73,6 +84,10 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 			tickFrequencies = calculateTickFrequencies(new ToneET(PC.C));
 		}
 		
+		/**
+		 * Updates the canvas' list of tones
+		 * @param tones a list of the current tones to be displayed
+		 */
 		public void updateCurrentTones(List<ToneET> tones) {
 			harmonics = new Harmonics(tones);
 		}
@@ -113,6 +128,11 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 	        }
 	    }
 	    
+	    /**
+	     * Paints blue lines across consonant sets of frequencies,
+	     * and red lines between dissonant sets of frequencies.
+	     * @param g the Graphics2D object
+	     */
 	    private void paintMatches(Graphics2D g) {
 	    	for (Dyad dyad : harmonics.getDyads()) {
 	    		if (dyad.getDis() > 0 ) {
@@ -137,14 +157,30 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 	    	}
 	    }
 	    
+	    /**
+	     * Determines and returns the color to be painted between two dissonant frequencies
+	     * @param dyad the pair of frequencies
+	     * @return the color to be painted
+	     */
 	    private Color getDissDyadColor(Dyad dyad) {
 	    	return new Color(1.0f, 0, 0, (float)dyad.getDis());
 	    }
 	    
+	    /**
+	     * Determines and returns the color to be painted across two consonant frequencies
+	     * @param dyad the pair of frequencies
+	     * @return the color to be painted
+	     */
 	    private Color getConsDyadColor(Dyad dyad) {
 	    	return new Color(38f/255f, 220f/255f, 255f/255f, (float)dyad.getCon());
 	    }
 	    
+	    /**
+	     * Determines and returns the frequencies at which reference lines 
+	     * should be displayed in the background of the graph
+	     * @param tickRef the tone on which the ticks will be based
+	     * @return the list of frequencies at which ticks will be drawn
+	     */
 	    private List<Double> calculateTickFrequencies(Tone tickRef) {
 	    	Double refFreq = tickRef.getFrequency();
 	    	List<Double> tickFreqs = new ArrayList<Double>();
@@ -159,6 +195,10 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 	    	return tickFreqs;
 	    }
 	    
+	    /**
+	     * Paints the reference lines displayed in the background of the graph
+	     * @param g the Graphics2D object
+	     */
 	    private void paintGrid(Graphics2D g) {
 	    	for (Double freq : tickFrequencies) {
 	    		int freqY = getYForFrequency(freq);
@@ -167,6 +207,12 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 	    	}
 	    }
 	    	
+	    /**
+	     * Determines and returns the y coordinate for the given frequency,
+	     * converted to a base-2 logarithmic scale
+	     * @param frequency the frequency to map
+	     * @return the resulting y coordinate
+	     */
 	    private int getYForFrequency(double frequency) {
 	    	double max = Calc.log2(MAXFREQ);
 	    	double min = Calc.log2(MINFREQ);
@@ -176,15 +222,20 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 	    }
 	}
 	
+	/**
+	 * Updates the notes to be displayed on the panel
+	 */
 	private void updateNotes() {
 		List<ToneET> notes = VSTPlayer.getInstance().getCurrentTones();
 		canvas.updateCurrentTones(notes);
-//		if (notes != null && notes.size() > 1)
-//			System.out.println(notes.get(0).getSymbol() + ChordPattern.getPatternFromTones(notes.get(0), notes).getSymbol());
 		canvas.repaint();
 		canvas.revalidate();
 	}
 	
+	/**
+	 * @param tones this list of tones to graph
+	 * @return an image of the harmonics graph plotting the given tones
+	 */
 	public static BufferedImage getSnapshot(List<ToneET> tones) {
 		HarmonicsPanel p = new HarmonicsPanel();
 		HarmonicsCanvas canvas = p.new HarmonicsCanvas();
@@ -220,6 +271,16 @@ public class HarmonicsPanel extends SubPanel implements Listener {
 		return false;
 	}
     
+    /**
+     * Paints a glow effect around a given line.
+     * @param x1 the line's x1 coordinate
+     * @param y1 the line's y1 coordinate
+     * @param x2 the line's x2 coordinate
+     * @param y2 the line's y2 coordinate
+     * @param distance the number of pixels the glow effect will extend
+     * @param intensity the brightness of the glow effect
+     * @param g the Graphics2D object
+     */
     private static void glowLine(int x1, int y1, int x2, int y2, int distance, double intensity, Graphics g) {
 		Color currentColor = g.getColor();
     	for (int i = 1; i <= distance; i++) {

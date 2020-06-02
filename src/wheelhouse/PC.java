@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * An enumeration of pitch classes
+ * @author Me
+ */
 public enum PC {
 
 	C (0, "C"),

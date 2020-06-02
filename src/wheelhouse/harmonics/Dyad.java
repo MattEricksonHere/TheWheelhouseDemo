@@ -4,6 +4,10 @@ import wheelhouse.Calc;
 import wheelhouse.Calc.Vector1D;
 import wheelhouse.tone.Tone;
 
+/**
+ * A pair of tones
+ * @author Me
+ */
 public class Dyad {
 	
 	protected double freq1;

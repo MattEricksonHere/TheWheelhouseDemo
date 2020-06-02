@@ -7,6 +7,10 @@ import wheelhouse.Calc;
 import wheelhouse.PC;
 import wheelhouse.Spectrum;
 
+/**
+ * A musical tone
+ * @author Me
+ */
 public class Tone {
 	protected int octave;
 	private double loudness;

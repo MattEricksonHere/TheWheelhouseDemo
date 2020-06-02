@@ -18,6 +18,10 @@ import javax.swing.KeyStroke;
 
 import vst.VSTPlayer;
 
+/**
+ * Class which allows computer keyboard to be used as a VST controller
+ * @author Me
+ */
 public class KeyboardMidiController {
 	
 	private static final int VELO = 93;

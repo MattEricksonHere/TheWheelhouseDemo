@@ -3,6 +3,10 @@ package messaging;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A simple message passer
+ * @author Me
+ */
 public class Courier {
 	
 	private static Courier instance = null;
@@ -21,6 +25,10 @@ public class Courier {
 		return instance;
 	}
 	
+	/**
+	 * Sends message to all listeners which are listening for it
+	 * @param msg
+	 */
 	protected void broadcast(QueueMessage msg) {
 		for (Listener listener : listeners) {
 			if (listener.acceptedMessageTypes().contains(msg.type)) {
@@ -34,6 +42,10 @@ public class Courier {
 		}
 	}
 	
+	/**
+	 * Adds listener to Courier's list
+	 * @param listener listener to register
+	 */
 	public static void registerListener(Listener listener) {
 		int currentPostfix = 1;
 		String threadName = listener.getClass().getSimpleName() + "Listener" + currentPostfix;

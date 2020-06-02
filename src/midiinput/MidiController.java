@@ -9,6 +9,10 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.Transmitter;
 
+/**
+ * A class which loads an external MIDI controller
+ * @author Me
+ */
 public class MidiController {
 
 	public static final String SL_MKII = "SL MkII";

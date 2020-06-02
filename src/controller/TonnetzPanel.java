@@ -20,6 +20,10 @@ import messaging.Courier;
 import messaging.Listener;
 import messaging.QueueMessage;
 
+/**
+ * A panel of the application which displays a tonnetz diagram
+ * @author Me
+ */
 public class TonnetzPanel extends SubPanel implements Listener {
 	private static final long serialVersionUID = -234281027530522640L;
 
@@ -31,6 +35,9 @@ public class TonnetzPanel extends SubPanel implements Listener {
 		Courier.registerListener(this);
 	}
 	
+	/**
+	 * Initializes the UI of the panel
+	 */
 	private void initPanel() {
 		
 		setPreferredSize(new Dimension(1000, 200));
@@ -41,29 +48,20 @@ public class TonnetzPanel extends SubPanel implements Listener {
 		add(canvas, BorderLayout.CENTER);
 		
 	}
-
-	@Override
-	public List<Integer> acceptedMessageTypes() {
-		List<Integer> types = new ArrayList<Integer>();
-		types.add(QueueMessage.CURRENTLY_PLAYED_NOTES_CHANGED);
-		return types;
-	}
-
-	@Override
-	public boolean receiveMessage(QueueMessage msg) {
-		if (msg.type == QueueMessage.CURRENTLY_PLAYED_NOTES_CHANGED) {
-			updateNotes();
-			return true;
-		}
-		return false;
-	}
 	
+	/**
+	 * Updates the notes currently being played
+	 */
 	private void updateNotes() {
 		canvas.updateCurrentTones(VSTPlayer.getInstance().getCurrentTones());
 		canvas.repaint();
 		canvas.revalidate();
 	}
 
+	/**
+	 * The subpanel on which the tonnetz will be painted
+	 * @author Me
+	 */
 	public class TonnetzCanvas extends JPanel {
 		private static final long serialVersionUID = -1397984742508421004L;
 
@@ -84,6 +82,12 @@ public class TonnetzPanel extends SubPanel implements Listener {
 			setMaximumSize(new Dimension(WIDTH, HEIGHT));
 		}
 		
+		/**
+		 * Generates a set of tonnetz nodes
+		 * @param rows number of rows in the diagram
+		 * @param columns number of columns in the diagram
+		 * @return the 2 dimensional array of nodes
+		 */
 		public TonnetzNode[][] generateNodes(int rows, int columns) {
 			
 			TonnetzNode[][] nodes = new TonnetzNode[rows][columns];
@@ -104,6 +108,10 @@ public class TonnetzPanel extends SubPanel implements Listener {
 			return nodes;
 		}
 		
+		/**
+		 * Updates the list of currently played notes
+		 * @param tones the currently played tones
+		 */
 		public void updateCurrentTones(List<ToneET> tones) {
 			List<PC> pcs = ToneET.toPitchClasses(tones);
 	        
@@ -123,6 +131,9 @@ public class TonnetzPanel extends SubPanel implements Listener {
 	        
 	    }
 	    
+	    /** Paints the grid of tonnetz nodes
+	     * @param g the Graphics2D object
+	     */
 	    private void paintTonnetz(Graphics2D g) {
 	    	
 	    	if (nodes == null) {
@@ -191,6 +202,10 @@ public class TonnetzPanel extends SubPanel implements Listener {
 	    }
 	}
 	
+	/**
+	 * One node of the tonnetz
+	 * @author Me
+	 */
 	private class TonnetzNode {
 		
 		public PC pc;
@@ -199,5 +214,21 @@ public class TonnetzPanel extends SubPanel implements Listener {
 		public TonnetzNode(PC pc) {
 			this.pc = pc;
 		}
+	}
+
+	@Override
+	public List<Integer> acceptedMessageTypes() {
+		List<Integer> types = new ArrayList<Integer>();
+		types.add(QueueMessage.CURRENTLY_PLAYED_NOTES_CHANGED);
+		return types;
+	}
+
+	@Override
+	public boolean receiveMessage(QueueMessage msg) {
+		if (msg.type == QueueMessage.CURRENTLY_PLAYED_NOTES_CHANGED) {
+			updateNotes();
+			return true;
+		}
+		return false;
 	}
 }

@@ -5,6 +5,10 @@ import java.util.List;
 
 import wheelhouse.Calc.Ratio;
 
+/**
+ * Represents an interval between two tones
+ * @author Me
+ */
 public class Interval {
 
 	private IntervalType type;

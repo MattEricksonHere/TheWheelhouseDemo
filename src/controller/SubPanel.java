@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * An internal panel of the application
+ * @author Me
+ */
 public abstract class SubPanel extends JPanel {
 	private static final long serialVersionUID = -6836845790644938163L;
 

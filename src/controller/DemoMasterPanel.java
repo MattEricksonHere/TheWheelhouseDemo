@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * The parent frame of the application
+ * @author Me
+ */
 public class DemoMasterPanel extends JFrame {
 	private static final long serialVersionUID = -3864149241166858442L;
 	
@@ -27,6 +31,9 @@ public class DemoMasterPanel extends JFrame {
 		initPanel();
 	}
 	
+	/**
+	 * Initializes the UI of the frame
+	 */
 	private void initPanel() {
 		setSize(1200, 800);
 		setResizable(false);
@@ -74,6 +81,10 @@ public class DemoMasterPanel extends JFrame {
 		masterPanel.add(keyPanel, c);
 	}
 	
+	/**
+	 * Application start
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		try {
@@ -89,6 +100,13 @@ public class DemoMasterPanel extends JFrame {
 		controller.setVisible(true);
 	}
 	
+	/**
+	 * Copies the specified dll into the working directory of the 
+	 * application so it can be used at runtime
+	 * @param name the name of the dll to be loaded at runtime
+	 * @return the resulting filepath of the loaded dll
+	 * @throws IOException
+	 */
 	public static String loadJarDll(String name) throws IOException {
         InputStream inputStream = DemoMasterPanel.class.getResourceAsStream(name);
         OutputStream fileStream = null;
@@ -111,6 +129,10 @@ public class DemoMasterPanel extends JFrame {
         return fileOut.getAbsolutePath();
 	}
 
+    /**
+     * Closes the specified stream, if possible
+     * @param stream the stream to be closed
+     */
     private static void close(final Closeable stream) {
         if (stream != null) {
             try {

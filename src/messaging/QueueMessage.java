@@ -1,5 +1,9 @@
 package messaging;
 
+/**
+ * A message that can be broadcasted to listeners
+ * @author Me
+ */
 public class QueueMessage {
 
 	// Play Panel

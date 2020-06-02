@@ -9,6 +9,10 @@ import wheelhouse.Calc.Vector1D;
 import wheelhouse.tone.Tone;
 import wheelhouse.Spectrum;
 
+/**
+ * Represents a list of tones as well as their overtones and undertones
+ * @author Me
+ */
 public class Harmonics {
 
 	protected final double MAXCBDIFF = 1.2;

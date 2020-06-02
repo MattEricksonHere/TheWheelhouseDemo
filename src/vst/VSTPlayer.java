@@ -13,6 +13,11 @@ import wheelhouse.tone.ToneET;
 
 import com.synthbot.audioplugin.vst.vst2.JVstHost2;
 
+/**
+ * A class which controls a VST instrument
+ * @author Me
+ *
+ */
 public class VSTPlayer implements Receiver {
 
 	private static final String VSTFILE = "mda ePiano.dll";

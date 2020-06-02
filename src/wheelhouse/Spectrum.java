@@ -3,6 +3,10 @@ package wheelhouse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines the overtone spectrum, or timbre, of a tone
+ * @author Me
+ */
 public class Spectrum {
 
 	List<Double> amplitudes = new ArrayList<Double>();

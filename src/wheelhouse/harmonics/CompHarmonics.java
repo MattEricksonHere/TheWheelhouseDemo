@@ -10,6 +10,10 @@ import wheelhouse.Calc;
 import wheelhouse.Calc.Vector1D;
 import wheelhouse.tone.Tone;
 
+/**
+ * Represents a union of two sets of tones and their harmonics
+ * @author Me
+ */
 public class CompHarmonics extends Harmonics {
 	
 	public List<? extends Tone> tones1, tones2;

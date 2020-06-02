@@ -7,6 +7,10 @@ import wheelhouse.Calc;
 import wheelhouse.Interval;
 import wheelhouse.PC;
 
+/**
+ * A musical tone belonging to the standard 12-tone equal temperament system
+ * @author Me
+ */
 public class ToneET extends Tone {
 
 	protected static final int refAbsNote = 69; // A4
