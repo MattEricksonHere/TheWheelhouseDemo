@@ -6,6 +6,10 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
+/**
+ * A static class that controls the UI constants of the application
+ * @author Me
+ */
 class UIBot {
 	
 	private static final Font mainFont = new Font("SansSerif", Font.BOLD, 12);

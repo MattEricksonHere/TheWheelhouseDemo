@@ -7,6 +7,10 @@ import java.util.List;
 
 import wheelhouse.tone.ToneET;
 
+/**
+ * Defines the root-independent and voicing-independent chord pattern
+ * @author Me
+ */
 public class ChordPattern extends ArrayList<Interval> {
 	private static final long serialVersionUID = 767086031474344398L;
 	
