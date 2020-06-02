@@ -60,3 +60,5 @@ Because of the restrictions of the libraries it uses, **this JAR file must be ru
 The software can be run by cloning the source code and running the main function in src\DemoMasterFrame.java.
 
 This has been tested using the Eclipse IDE.
+
+**The Java project must be run using a 32-bit JRE.**
