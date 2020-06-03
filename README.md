@@ -32,10 +32,10 @@ JVstHost is an open-source library used to load VSTs (virtual instruments) for u
 
 "mda ePiano" is an open-source, lightweight electric piano synthesizer. Find source code and more information here: http://mda.smartelectronix.com/synths.htm
 
-### Running Cloned Source Code
+## Running Cloned Source Code
 
 The software can be run by cloning the source code and running the main function in src\DemoMasterFrame.java. All dependencies are currently included in the repository.
 
-This has been tested using the Eclipse IDE.
+This has been tested using the Eclipse IDE. If using another environment, make sure the included JVstHost.jar is included in the build path.
 
 **Due to the requirements of the libraries used, the Java project must be run using a 32-bit JRE.**
